@@ -27,24 +27,20 @@ class LinkedList {
 
   delete(id) {
     if (this.head) {
-      if (this.head.value.id === id) {
-        this.head = this.head.next;
-      } else {
-        let current = this.head.next;
-        let previous = this.head;
-  
-        while (current) {
-          if (current.value.id === id) {
-            previous.next = current.next;
 
-            return this.head;
-          }
+      let current = this.head;
+      let previous = null;
 
-          previous = current;
-          current = current.next;
+      while (current) {
+        if (current.value.id === id) {
+          previous.next = current.next;
+
+          return this.head;
         }
-      }
 
+        previous = current;
+        current = current.next;
+      }
     }
 
     throw new Error('Linked List is empty');
