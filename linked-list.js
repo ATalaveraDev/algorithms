@@ -47,23 +47,28 @@ class LinkedList {
   }
 }
 
+// INSERT
 const node = new ListNode({ id: 1, value: 'Spiderman' });
 const list = new LinkedList(node);
 
-// INSERT
-const venom = new ListNode({ id: 2, value: 'Venom' });
-list.insert(venom);
+const peter = new ListNode({ id: 2, value: 'Peter Parker' });
+list.insert(peter);
+
+console.log('After inserting', list);
 
 // DELETE
-const carnage = new ListNode({ id: 3, value: 'Carnage' });
-list.insert(carnage);
+const venom = new ListNode({ id: 1, value: 'Venom' });
+const enemiesList = new LinkedList(venom);
 
-const docOc = new ListNode({ id: 4, value: 'Doc Octopus' });
-list.insert(docOc);
+const carnage = new ListNode({ id: 2, value: 'Carnage' });
+enemiesList.insert(carnage);
 
-const greenGoblin = new ListNode({ id: 5, value: 'Green Goblin' });
-list.insert(greenGoblin);
+const docOc = new ListNode({ id: 3, value: 'Doc Octopus' });
+enemiesList.insert(docOc);
 
-list.delete(4)
+const greenGoblin = new ListNode({ id: 4, value: 'Green Goblin' });
+enemiesList.insert(greenGoblin);
 
-console.log(list);
+enemiesList.delete(3);
+
+console.log('After deleting', enemiesList);
