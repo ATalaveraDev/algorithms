@@ -67,6 +67,26 @@ class BST {
 
     console.log('Value not found')
   }
+
+  bfsRecursive(value) {
+    const searcher = (node) => {
+      if (node.value === value) {
+        return node;
+      }
+
+      if (value < node.value && node.left) {
+        return searcher(node.left);
+      }
+
+      if (value > node.value && node.right) {
+        return searcher(node.right);
+      }
+
+      console.log('Value not found')
+    };
+
+    return searcher(this.root);
+  }
 }
 
 const nodeBST = new BSTNode(10);
@@ -77,5 +97,5 @@ tree.insert(11)
 tree.insert(11)
 tree.insert(6)
 
-console.log('BFS result:', tree.bfs(15));
+console.log('BFS result:', tree.bfsRecursive(5));
 // console.log(tree)
