@@ -45,6 +45,28 @@ class BST {
 
     return inserter(this.root);
   }
+
+  bfs(value) {
+    let nodes = [this.root];
+
+    while (nodes.length) {
+      const current = nodes.shift();
+
+      if (current.value === value) {
+        return current;
+      }
+
+      if (value < current.value && current.left) {
+        nodes.push(current.left);
+      }
+
+      if (value > current.value && current.right) {
+        nodes.push(current.right);
+      }
+    }
+
+    console.log('Value not found')
+  }
 }
 
 const nodeBST = new BSTNode(10);
@@ -55,4 +77,5 @@ tree.insert(11)
 tree.insert(11)
 tree.insert(6)
 
-console.log(tree)
+console.log('BFS result:', tree.bfs(15));
+// console.log(tree)
