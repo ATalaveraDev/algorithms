@@ -87,15 +87,58 @@ class BST {
 
     return searcher(this.root);
   }
+
+  delete(value) {
+    if (!this.root) {
+      console.log('Tree is empty');
+      return;
+    }
+
+    const deleter = (node) => {
+      if (node.value === value) {
+        if (!node.right && !node.left) {
+          return null;
+        }
+
+        if (node.right) {
+          let current = node.right;
+
+          while (current.left) {
+            current = current.left;
+          }
+
+          return current;
+        }
+
+        if (node.left) {
+          return node.left;
+        }
+      };
+
+      if (value < node.value) {
+        node.left = deleter(node.left);
+      }
+
+      if (value > node.value) {
+        node.right = deleter(node.right);
+      }
+
+      return node;
+    };
+
+    this.root = deleter(this.root);
+
+    return this.root;
+  }
 }
 
 const nodeBST = new BSTNode(10);
 const tree = new BST(nodeBST);
 
-tree.insert(5)
-tree.insert(11)
-tree.insert(11)
-tree.insert(6)
+tree.insert(5);
+tree.insert(11);
+tree.insert(6);
 
-console.log('BFS result:', tree.bfsRecursive(5));
+// console.log('BFS result:', tree.bfsRecursive(5));
 // console.log(tree)
+console.log(tree.delete(5))
